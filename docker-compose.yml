@@ -3,12 +3,12 @@ services:
   php-apache-environment:
     container_name: php-apache
     build:
-        context: ./test-app
+        context: ./dolibarr-yuupee
         dockerfile: Dockerfile
     depends_on:
         - db
     volumes:
-      - ./test-app:/var/www/html/
+      - ./dolibarr-yuupee:/var/www/html/
     ports:
       - 8000:80
   db:
@@ -18,7 +18,7 @@ services:
         dockerfile: Dockerfile
     restart: always
     volumes:
-        - ./data:/var/lib/mysql
+        - ./script/mysql:/var/lib/mysql
     ports:
         - "9906:3306"
   phpmyadmin:
